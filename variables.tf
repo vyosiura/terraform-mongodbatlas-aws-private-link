@@ -93,13 +93,5 @@ variable "rules" {
         self                -> (Optional) Whether the security group itself will be added as a source to this ingress rule.
     A default egress all rule is created by default 
 EOF
-    default = {
-        "ephemeral_ports" = {
-            type        = "ingress"
-            from_port   = "1024"
-            to_port     = "65535"
-            protocol    = "tcp"
-            description = "Port range used for Atlas Endpoint Service"
-        }
-    }
+    default = {}
 }

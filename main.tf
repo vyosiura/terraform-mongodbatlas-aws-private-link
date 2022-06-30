@@ -16,6 +16,13 @@ locals {
             protocol            = "-1"
             description         = "Default egress rule"
             cidr_blocks         = ["0.0.0.0/0"]
+        },
+        "ephemeral_ports" = {
+            type        = "ingress"
+            from_port   = "1024"
+            to_port     = "65535"
+            protocol    = "tcp"
+            description = "Port range used for Atlas Endpoint Service"
         }
     }, var.rules)
 }
