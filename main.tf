@@ -8,6 +8,7 @@ locals {
 
     security_group_name     = (var.security_group_name == null ? "vpc-endpoint-sg-mongodbatlas-${local.project_id}" : var.security_group_name)
 
+
     rules                   = merge({
         "egress_all"    = {
             type                = "egress"
@@ -18,14 +19,16 @@ locals {
             cidr_blocks         = ["0.0.0.0/0"]
         },
         "ephemeral_ports" = {
-            type        = "ingress"
-            from_port   = "1024"
-            to_port     = "65535"
-            protocol    = "tcp"
-            description = "Port range used for Atlas Endpoint Service"
+            type                = "ingress"
+            from_port           = "1024"
+            to_port             = "65535"
+            protocol            = "tcp"
+            description         = "Port range used for Atlas Endpoint Service"
+            cidr_blocks         = var.cidr_blocks
         }
     }, var.rules)
 }
+
 
 /*
     To Do(REMOVE IT RIGHT AFTER I FINISH SOME OF THESE TASKS TO MAKE MY LIFE EASIER FOR MYSELF):

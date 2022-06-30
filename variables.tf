@@ -95,3 +95,8 @@ variable "rules" {
 EOF
     default = {}
 }
+
+variable "cidr_blocks" {
+    type = list(string)
+    description = "(optional)By default, a ingress inboud rule is created to allow port 1024 ~ 65535, which can be used to access Atlas databases.  A list of CIDR blocks to allow the VPC Endpoint's security group"
+}
