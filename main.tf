@@ -86,7 +86,7 @@ resource "mongodbatlas_privatelink_endpoint_service" "this" {
 resource "aws_security_group_rule" "this" {
     for_each                = local.rules
 
-    security_group_id       = aws_security_group.this.id 
+    security_group_id       = join("", aws_security_group.this[*].id)
     type                    = each.value["type"]
     from_port               = each.value["from_port"]
     to_port                 = each.value["to_port"] 
