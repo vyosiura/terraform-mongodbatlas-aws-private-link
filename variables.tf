@@ -26,7 +26,7 @@ variable "private_dns_enabled" {
     default = true
 }
 
-variable "dns_record_type" {
+variable "dns_record_ip_type" {
     type = string
     description = "(optional) The DNS records created for the endpoint. Valid values are ipv4, dualstack, service-defined, and ipv6"
     default = "ipv4"

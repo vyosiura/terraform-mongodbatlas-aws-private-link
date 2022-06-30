@@ -64,7 +64,7 @@ resource "aws_vpc_endpoint" "this" {
     policy                  = var.policy 
     private_dns_enabled     = var.private_dns_enabled 
     dns_options {
-        dns_record_type     = var.dns_record_type
+        dns_record_ip_type     = var.dns_record_type
     }
     ip_address_type         = var.ip_address_type
     subnet_ids              = var.subnet_ids 
