@@ -28,6 +28,13 @@ locals {
         - Read more about the VPC Endpoint Interface type and how it provides high availability by spamming multiple availability zones 
         - Review all variables descriptions and if they make sense
 
+
+    Some considerations:
+
+        MongoDB strongly recommends using the DNS seedlist private endpoint-aware connection string, 
+        so that DNS automatically updates the ports that AWS PrivateLink uses if they change. 
+        For the same reason, MongoDB also strongly recommends allow-listing the entire port range, instead of specific ports.
+
 */
 resource "mongodbatlas_privatelink_endpoint" "this" {
     project_id          = local.project_id
@@ -66,6 +73,7 @@ resource "mongodbatlas_privatelink_endpoint_service" "this" {
     endpoint_service_id     = aws_vpc_endpoint.this.id 
     provider_name           = local.provider_name
 }
+
 
 
 resource "aws_security_group_rule" "this" {
