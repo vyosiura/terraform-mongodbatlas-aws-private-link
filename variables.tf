@@ -23,7 +23,7 @@ variable "policy" {
 variable "private_dns_enabled" {
     type = bool
     description = "(optional) (Optional; AWS services and AWS Marketplace partner services only) Whether or not to associate a private hosted zone with the specified VPC. Applicable for endpoints of type Interface. Defaults to true."
-    default = true
+    default = false
 }
 
 variable "dns_record_ip_type" {
